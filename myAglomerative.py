@@ -1,5 +1,7 @@
 import itertools
 import copy
+import numpy as np
+
 class Aglomerative:
     # A, B = satu cluster
     def single(self, A, B):
@@ -37,9 +39,9 @@ class Aglomerative:
         i = 0
         for index in A:
             if i == 0:
-                cluster_A = [Model.data[index]]
+                cluster_A = [self.data[index]]
             else:
-                cluster_A.append(Model.data[index])
+                cluster_A.append(self.data[index])
             i += 1
         cluster_A = np.array(cluster_A)
         mean_A = np.mean(cluster_A, axis=0)
@@ -47,9 +49,9 @@ class Aglomerative:
         i = 0
         for index in B:
             if i == 0:
-                cluster_B = [Model.data[index]]
+                cluster_B = [self.data[index]]
             else:
-                cluster_B.append(Model.data[index])
+                cluster_B.append(self.data[index])
             i += 1
         cluster_B = np.array(cluster_B)
         mean_B = np.mean(cluster_B, axis=0)
