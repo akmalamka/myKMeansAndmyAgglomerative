@@ -54,6 +54,7 @@ def calculateFMI(data):
 #Asumsi: Kolom terakhir data : cluster, Kolom 1 sebelum terakhir data : label
     label = getUniqueCluster(data)
     result = []
+    sumFMI = 0
     for cluster in label:
         tp = 0
         fp = 0
@@ -66,7 +67,10 @@ def calculateFMI(data):
             elif((datum[-1] != cluster) and (datum[-2] == cluster)):
                 fn += 1
         fmi = (tp)/(math.sqrt((tp+fp)*(tp+fn)))
-        result.append([cluster,fmi])
+        sumFMI += fmi
+        result.append([cluster,round(fmi,2)])
+    rerata = sumFMI/len(result)
+    result.append(['Rata-rata',round(rerata,2)])
     return result
 
 def avgIntraDistance(datum, cluster):
