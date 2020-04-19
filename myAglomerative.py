@@ -1,7 +1,6 @@
 import itertools
 import copy
 import numpy as np
-
 class Aglomerative:
     # A, B = satu cluster
     def single(self, A, B):
@@ -34,31 +33,31 @@ class Aglomerative:
             i += 1
 
         return temp_sum/i
-
+    
     def average_group(self, A, B):
         i = 0
         for index in A:
-            if i == 0:
+            if(i == 0):
                 cluster_A = [self.data[index]]
             else:
                 cluster_A.append(self.data[index])
-            i += 1
+            i+=1
         cluster_A = np.array(cluster_A)
         mean_A = np.mean(cluster_A, axis=0)
 
         i = 0
         for index in B:
-            if i == 0:
+            if(i == 0):
                 cluster_B = [self.data[index]]
             else:
                 cluster_B.append(self.data[index])
-            i += 1
+            i+=1
         cluster_B = np.array(cluster_B)
         mean_B = np.mean(cluster_B, axis=0)
 
         temp = 0
-        for x, y in zip(mean_A, mean_B):
-            temp += abs(x - y)
+        for x,y in zip(mean_A, mean_B):
+            temp += abs(x-y)
 
         return temp
 
