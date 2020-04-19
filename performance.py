@@ -79,8 +79,10 @@ def avgIntraDistance(datum, cluster):
         for i in range(len(datum)-2):
             dist += pow(((float(datum[i]))-(float(obj[i]))),2)
         distance += math.sqrt(dist)
-
-    return(distance/(len(cluster)-1))  #dikurangi satu karena pada kenyataan jarak datum ke dirinya dihitung
+    if(len(cluster) == 1):
+        return 0
+    else:
+        return(distance/(len(cluster)-1))  #dikurangi satu karena pada kenyataan jarak datum ke dirinya dihitung
 
 def avgInterDistance(datum, cluster):
 #I.S. datum adalah objek yang diamati terhadap data di cluster
